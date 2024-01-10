@@ -1,7 +1,19 @@
 const playAudio = (e) => {
-  // Note: Keycode is deprecated, is there another thing to use? 
-  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+  let eType;
+
+  if (e.type === "keydown") {
+    // Note: Keycode is deprecated, is there another thing to use? 
+    eType = e.keyCode;
+  } else if (e.type === "click") {
+    const keyElement = e.target.closest(".key");
+    eType = keyElement ? keyElement.getAttribute("data-key") : null;
+  }
+
+  if (!eType) return;
+
+  const audio = document.querySelector(`audio[data-key="${eType}"]`);
+  const key = document.querySelector(`.key[data-key="${eType}"]`);
 
   if (!audio) return;
 
@@ -17,6 +29,9 @@ const removeAnimation = (e) => {
 }
 
 const keys = document.querySelectorAll(".key");
-keys.forEach(key => key.addEventListener("transitionend", removeAnimation));
+keys.forEach(key => { 
+  key.addEventListener("transitionend", removeAnimation);
+  key.addEventListener("click", playAudio);
+});
 
 window.addEventListener("keydown", playAudio);
