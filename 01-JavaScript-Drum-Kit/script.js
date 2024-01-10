@@ -1,8 +1,5 @@
-window.addEventListener("keydown", function (e) {
-  
+const playAudio = (e) => {
   // Note: Keycode is deprecated, is there another thing to use? 
-  // console.log(e.keyCode);
-
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 
@@ -12,13 +9,14 @@ window.addEventListener("keydown", function (e) {
   audio.play();
 
   key.classList.add("playing");
+}
 
-});
-
-const removeTransition = (e) => {
+const removeAnimation = (e) => {
   if (e.propertyName !== "transform") return;
   e.target.classList.remove("playing");
 }
 
 const keys = document.querySelectorAll(".key");
-keys.forEach(key => key.addEventListener("transitionend", removeTransition));
+keys.forEach(key => key.addEventListener("transitionend", removeAnimation));
+
+window.addEventListener("keydown", playAudio);
