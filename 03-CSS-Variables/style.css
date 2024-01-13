@@ -1,6 +1,6 @@
 :root {
   --base: #6cd4ff;
-  --background: #34477b;
+  --background: #153793;
   --spacing: 10px;
   --blur: 10px;
 }
@@ -9,26 +9,44 @@ img {
   padding: var(--spacing);
   background: var(--base);
   filter: blur(var(--blur));
+  max-width: 700px;
+  width: 100%;
 }
 
 .hl {
   color: var(--base);
 }
 
-/* misc styles, nothing to do with CSS variables */
 body {
   text-align: center;
-  background: var(--background);
+  /* background: var(--background); */
+  background: linear-gradient(to bottom, var(--background), #eee, var(--background));
   color: white;
   font-family: "helvetica neue", sans-serif;
-  font-weight: 100;
-  font-size: 32px;
+  font-weight: 200;
+  font-size: 1.5rem;
 }
 
 .controls {
   margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 input {
   width: 100px;
+  margin-right: 1rem;
+}
+
+footer {
+  font-size: 0.875rem;
+  padding: 2rem 0 1rem 0;
 }
