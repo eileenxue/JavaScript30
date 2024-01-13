@@ -1,9 +1,8 @@
 const playAudio = (e) => {
-
   let eType;
 
   if (e.type === "keydown") {
-    // Note: Keycode is deprecated, is there another thing to use? 
+    // Note: Keycode is deprecated, is there another thing to use?
     eType = e.keyCode;
   } else if (e.type === "click") {
     const keyElement = e.target.closest(".key");
@@ -21,15 +20,15 @@ const playAudio = (e) => {
   audio.play();
 
   key.classList.add("playing");
-}
+};
 
 const removeAnimation = (e) => {
   if (e.propertyName !== "transform") return;
   e.target.classList.remove("playing");
-}
+};
 
 const keys = document.querySelectorAll(".key");
-keys.forEach(key => { 
+keys.forEach((key) => {
   key.addEventListener("transitionend", removeAnimation);
   key.addEventListener("click", playAudio);
 });
