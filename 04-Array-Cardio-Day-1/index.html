@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Array Cardio 💪</title>
-  <link rel="icon" href="https://fav.farm/🔥" />
+  <title>Array Cardio #1</title>
+  <link rel="icon" href="https://fav.farm/💪" />
 </head>
 <body>
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
@@ -44,6 +44,7 @@
       }
     });
 
+    console.log("Displaying inventors born in the 1500s:");
     console.table(bornInFifteen);
 
     // Array.prototype.map()
@@ -52,11 +53,14 @@
       return `${inventor.first} ${inventor.last}`;
     })
 
+    console.log("Listing inventors by full names:");
     console.table(fullNames);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
     const oldToYoung = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
+
+    console.log("Ordering inventors from oldest to youngest:");
     console.table(oldToYoung);
 
     // Array.prototype.reduce()
@@ -74,6 +78,7 @@
       return firstPerson > secondPerson ? -1 : 1;
     });
 
+    console.log("Sorting inventors by years lived:");
     console.table(yearsLived);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
@@ -96,6 +101,7 @@
       return aLast > bLast ? 1 : -1;
     });
 
+    console.log("Ordering people alphabetically by last names:");
     console.table(sortLastNames);
 
     // 8. Reduce Exercise
@@ -112,6 +118,7 @@
       return obj;
     }, {})
 
+    console.log("Calculating the sum of each type of transportation:");
     console.table(transportation);
 
   </script>
