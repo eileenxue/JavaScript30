@@ -8,8 +8,6 @@ fetch(endpoint)
   .then((blob) => blob.json())
   .then((data) => cities.push(...data));
 
-console.log(cities);
-
 const findMatches = (words, cities) => {
   return cities.filter((place) => {
     // Create the regex outside of the match, cannot do it inside
@@ -20,12 +18,13 @@ const findMatches = (words, cities) => {
 };
 
 const displayMatches = (e) => {
+  const searchValue = e.target.value;
   const matchArray = findMatches(e.target.value, cities);
   const listItems = matchArray
     .map((place) => {
-      const regex = new RegExp(e.target.value, "gi");
-      const cityName = place.city.replace(regex, `<span class="hl">${e.target.value}</span>`);
-      const stateName = place.state.replace(regex, `<span class="hl">${e.target.value}</span>`);
+      const regex = new RegExp(searchValue, "gi");
+      const cityName = place.city.replace(regex, `<span class="hl">${searchValue}</span>`);
+      const stateName = place.state.replace(regex, `<span class="hl">${searchValue}</span>`);
       const population = parseInt(place.population).toLocaleString();
       return `
         <li>
@@ -35,8 +34,8 @@ const displayMatches = (e) => {
       `;
     })
     .join("");
-  console.log(listItems);
-  suggestions.innerHTML = listItems;
+
+  suggestions.innerHTML = searchValue.trim() === "" ? "" : listItems;
 };
 
 const searchInput = document.querySelector(".search");
